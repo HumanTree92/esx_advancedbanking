@@ -5,12 +5,13 @@ Advanced Banking for ESX - Edited/Made by Human Tree92 ([Velociti Entertainment 
 * Players can Deposit, Withdraw, & Transfer Money.
 * Works with all Banks & ATMs on the Map.
 * Has a Tablet Styled UI.
+* Works with esx_advancedholdup so if a player starts a robbery players won't be able to Access Banks or ATMs. This can be turned on/off in the config.lua
 
 # Requirements:
 * Required:
   * [es_extended](https://github.com/ESX-Org/es_extended)
 * Optional:
-  * NONE
+  * [esx_advancedholdup](https://github.com/HumanTree92/esx_advancedholdup)
 
 # Download & Installation:
 1) Download the .zip.
