@@ -51,9 +51,6 @@ AddEventHandler('esx_advancedbanking:deposit', function(amount)
 
 		xPlayer.removeMoney(amount)
 		xPlayer.addAccountMoney('bank', amount)
-
-		-- esx_logactions
-		TriggerEvent('esx_logactions:AddInLog', 'banking', 'bank_deposit', _source, GetPlayerName(source), amount)
 	end
 end)
 
@@ -74,9 +71,6 @@ AddEventHandler('esx_advancedbanking:withdraw', function(amount)
 
 		xPlayer.removeAccountMoney('bank', amount)
 		xPlayer.addMoney(amount)
-
-		-- esx_logactions
-		TriggerEvent('esx_logactions:AddInLog', 'banking', 'bank_withdraw', _source, GetPlayerName(source), amount)
 	end
 end)
 
@@ -103,9 +97,6 @@ AddEventHandler('esx_advancedbanking:transfer', function(target, amountt)
 				-- Show Notification
 				xPlayer.showNotification(_U('transfer_you', amountt, target))
 				tPlayer.showNotification(_U('transfer_receive', amountt, _source))
-
-				-- esx_logactions
-				TriggerEvent('esx_logactions:AddInLog', 'banking', 'bank_transferr', _source, GetPlayerName(_source), amountt, GetPlayerName(target))
 			end
 		end
 	else

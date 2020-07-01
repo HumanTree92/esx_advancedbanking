@@ -13,7 +13,7 @@ end)
 -- Current Balance Event
 RegisterNetEvent('esx_advancedbanking:currentBalance')
 AddEventHandler('esx_advancedbanking:currentBalance', function(balance)
-	ESX.TriggerServerCallback('esx_ventaiomenu:getCharData', function(data)
+	ESX.TriggerServerCallback('esx_advancedbanking:getCharData', function(data)
 		if Config.ShowCharName then
 			if Config.ShowFirstLast then
 				playerName = data.firstname .. ' ' .. data.lastname
