@@ -1,7 +1,10 @@
 # About esx_advancedbanking:
-Advanced Banking for ESX - Edited/Made by Human Tree92 ([Velociti Entertainment Customs & Wiki](http://www.velocitientertainment.com/customs/))
+Advanced Banking for ESX V1 Final or EXM - Edited/Made by Human Tree92 ([Velociti Entertainment Customs & Wiki](http://www.velocitientertainment.com/customs/))
 
-I can not Guarantee that this will work with the Latest es_extended V2.
+# Creating Issues
+* Check the [Closed Topics](https://github.com/HumanTree92/esx_advancedbanking/issues?q=is%3Aissue+is%3Aclosed) & [Wiki](http://www.velocitientertainment.com/customs/) before opening an issue to see if your issue has already been Answered.
+* Do NOT Delete the Pre-Written Text in the issue.
+* Failue to due any of the above will result in Topic being deleted & you being Blocked. The Pre-Written text helps me with getting to the Bottom of the Issues & i hate explaining things over & over.
 
 # Helpfull Info:
 * Players can Deposit, Withdraw, & Transfer Money.
@@ -11,7 +14,7 @@ I can not Guarantee that this will work with the Latest es_extended V2.
 
 # Requirements:
 * Required:
-  * [es_extended V1 Final](https://github.com/ESX-Org/es_extended) or [extendedmode](https://github.com/extendedmode/extendedmode)
+  * [es_extended V1 Final](https://github.com/esx-framework/es_extended/tree/v1-final) or [extendedmode](https://github.com/extendedmode/extendedmode)
 * Optional:
   * [esx_advancedholdup](https://github.com/HumanTree92/esx_advancedholdup)
 
@@ -66,7 +69,7 @@ Scripts that will no longer be Maintained.
 
 # Legal
 ### License
-esx_advancedbanking - Advanced Banking for ESX
+esx_advancedbanking - Advanced Banking for ESX V1 Final or EXM
 
 Copyright (C) 2011-2020 Velociti Entertainment
 
