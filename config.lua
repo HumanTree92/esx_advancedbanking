@@ -60,6 +60,7 @@ Config.ATMLocations = {
 			-- Los Santos
 			vector3(2558.76, 351.06, 108.62), -- Palomino Fwy
 			vector3(2558.46, 389.46, 108.62), -- Palomino Fwy
+			vector3(-821.51, -1082.19, 11.13), -- Palomino Ave
 			vector3(-660.76, -853.82, 24.48), -- Palomino Ave
 			vector3(1077.81, -776.55, 58.24), -- West Mirror Drive
 			vector3(1153.65, -326.8, 69.21), -- West Mirror Drive

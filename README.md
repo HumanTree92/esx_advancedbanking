@@ -19,10 +19,9 @@ Advanced Banking for ESX V1 Final or EXM - Edited/Made by Human Tree92 ([Velocit
   * [esx_advancedholdup](https://github.com/HumanTree92/esx_advancedholdup)
 
 # Download & Installation:
-1) Download the .zip.
-2) Extract the .zip or Open the .zip.
-3) Place `esx_advancedbanking` in your ESX Directory
-4) Add `start esx_advancedbanking` to your server.cfg
+1) Download Master or Release & Extract the .zip or Open the .zip.
+2) Place `esx_advancedbanking` in your ESX Directory
+3) Add `start esx_advancedbanking` to your server.cfg
 
 # Credits/Original Code:
 * [onlyserenity](https://github.com/onlyserenity)
