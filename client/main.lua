@@ -215,23 +215,23 @@ Citizen.CreateThread(function()
 
 			if IsControlJustReleased(0, 38) and GetLastInputMethod(2) then
 				if Config.UseAdvancedHoldup then
-					ESX.TriggerServerCallback('esx_advancedholdup:checkRob', function(success)
-						if success then
-							if IsPedOnFoot(PlayerPedId()) then
-								if CurrentAction == 'atm_menu' then
+					if IsPedOnFoot(PlayerPedId()) then
+						if CurrentAction == 'atm_menu' then
+							openUI()
+						elseif CurrentAction == 'bank_menu' then
+							ESX.TriggerServerCallback('esx_advancedholdup:checkRob', function(success)
+								if success then
 									openUI()
-								elseif CurrentAction == 'bank_menu' then
-									openUI()
+								else
+									ESX.ShowNotification(_U('error_robbery'))
 								end
-
-								CurrentAction = nil
-							else
-								ESX.ShowNotification(_U('error_vehicle'))
-							end
-						else
-							ESX.ShowNotification(_U('error_robbery'))
+							end)
 						end
-					end)
+
+						CurrentAction = nil
+					else
+						ESX.ShowNotification(_U('error_vehicle'))
+					end
 				else
 					if IsPedOnFoot(PlayerPedId()) then
 						if CurrentAction == 'atm_menu' then
