@@ -9,11 +9,9 @@ function getCharData(source, cb)
 		['@identifier'] = xPlayer.identifier
 	})
 
-	local firstname = result[1].firstname
-	local lastname = result[1].lastname
 	local data = {
-		firstname = firstname,
-		lastname = lastname
+		firstname = result[1].firstname,
+		lastname = result[1].lastname
 	}
 
 	cb(data)

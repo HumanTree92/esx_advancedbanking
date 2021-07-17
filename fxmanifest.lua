@@ -11,14 +11,14 @@ version '1.0.0'
 server_scripts {
 	'@mysql-async/lib/MySQL.lua',
 	'@es_extended/locale.lua',
-	'locales/en.lua',
+	'locales/*.lua',
 	'config.lua',
 	'server/main.lua'
 }
 
 client_scripts {
 	'@es_extended/locale.lua',
-	'locales/en.lua',
+	'locales/*.lua',
 	'config.lua',
 	'client/main.lua'
 }
@@ -31,4 +31,6 @@ files {
 	'html/img/BG_White.png'
 }
 
-dependency 'es_extended'
+dependencies {
+	'es_extended'
+}

@@ -24,11 +24,7 @@ AddEventHandler('esx_advancedbanking:currentBalance', function(balance)
 			playerName = GetPlayerName(source)
 		end
 
-		SendNUIMessage({
-			type = "balanceHUD",
-			balance = balance,
-			player = playerName
-		})
+		SendNUIMessage({type = 'balanceHUD', balance = balance, player = playerName})
 	end)
 end)
 
