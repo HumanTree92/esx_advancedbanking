@@ -1,14 +1,6 @@
 local CurrentActionData = {}
 local HasAlreadyEnteredMarker, IsInMainMenu = false, false
 local LastZone, CurrentAction, CurrentActionMsg
-ESX = nil
-
-Citizen.CreateThread(function()
-	while ESX == nil do
-		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
-	end
-end)
 
 -- Current Balance Event
 RegisterNetEvent('esx_advancedbanking:currentBalance')

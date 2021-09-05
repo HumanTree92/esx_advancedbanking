@@ -1,7 +1,3 @@
-ESX = nil
-
-TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-
 -- getCharData
 function getCharData(source, cb)
 	local xPlayer = ESX.GetPlayerFromId(source)
