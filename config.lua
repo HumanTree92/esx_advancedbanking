@@ -15,9 +15,14 @@ Config.UseBankBlips = false -- true = Use Bank Blips | false = Does the Opposite
 Config.BankBlip = {Sprite = 108, Color = 0, Display = 2, Scale = 1.0}
 Config.BankMarker = {Type = 29, r = 0, g = 255, b = 0, x = 1.5, y = 1.5, z = 1.5}
 
-Config.BankLocations = {
-	Locations = {
-		Coords = {
+Config.Animation = {
+	Active = true,
+	Time = 2500 -- Miliseconds
+}
+
+Config.Locations = {
+	Locs = {
+		Banks = {
 			vector3(149.15, -1040.54, 29.37), -- Vespucci Blvd | Fleeca Bank
 			vector3(-1213.29, -331.05, 37.79), -- Boulevard Del Perro | Fleeca Bank
 			vector3(-2962.51, 482.24, 15.7), -- Great Ocean Hwy | Fleeca Bank
@@ -29,13 +34,8 @@ Config.BankLocations = {
 			vector3(247.51, 223.29, 106.29), -- Alta St | Pacific Standard Public Deposit Bank
 			vector3(252.61, 221.34, 106.29), -- Alta St | Pacific Standard Public Deposit Bank
 			vector3(1175.74, 2706.88, 38.09) -- Route 68 | Fleeca Bank
-		}
-	}
-}
-
-Config.ATMLocations = {
-	Locations = {
-		Coords = {
+		},
+		ATMs = {
 			-- Paleto Bay
 			vector3(-386.8, 6046.14, 31.5), -- Paleto Blvd
 			vector3(-97.23, 6455.42, 31.47), -- Paleto Blvd

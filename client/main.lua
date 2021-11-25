@@ -5,19 +5,21 @@ local LastZone, CurrentAction, CurrentActionMsg
 -- Current Balance Event
 RegisterNetEvent('esx_advancedbanking:currentBalance')
 AddEventHandler('esx_advancedbanking:currentBalance', function(balance)
-	ESX.TriggerServerCallback('esx_advancedbanking:getCharData', function(data)
-		if Config.ShowCharName then
+	if Config.ShowCharName then
+		ESX.TriggerServerCallback('esx_advancedbanking:getCharData', function(data)
 			if Config.ShowFirstLast then
 				playerName = data.firstname .. ' ' .. data.lastname
 			else
 				playerName = data.firstname
 			end
-		else
-			playerName = GetPlayerName(source)
-		end
 
+			SendNUIMessage({type = 'balanceHUD', balance = balance, player = playerName})
+		end)
+	else
+		local id = PlayerId()
+		local playerName = GetPlayerName(id)
 		SendNUIMessage({type = 'balanceHUD', balance = balance, player = playerName})
-	end)
+	end
 end)
 
 -- Balance Callback
@@ -43,6 +45,30 @@ RegisterNUICallback('transfer', function(data)
 	TriggerServerEvent('esx_advancedbanking:balance')
 end)
 
+-- Result Event
+RegisterNetEvent('esx_advancedbanking:result')
+AddEventHandler('esx_advancedbanking:result', function(type, message)
+	SendNUIMessage({type = 'result', m = message, t = type})
+end)
+
+-- Invest Callback
+RegisterNUICallback('esx_invest', function()
+	if IsInMainMenu then
+		IsInMainMenu = false
+		SetNuiFocus(false, false)
+		SendNUIMessage({type = 'closeAll'})
+		exports.esx_invest:openUI()
+	end
+end)
+
+-- Play Animation Function
+function playAnim(animDict, animName, duration)
+	RequestAnimDict(animDict)
+	while not HasAnimDictLoaded(animDict) do Citizen.Wait(0) end
+	TaskPlayAnim(PlayerPedId(), animDict, animName, 1.0, -1.0, duration, 49, 1, false, false, false)
+	RemoveAnimDict(animDict)
+end
+
 -- Close UI Callback
 RegisterNUICallback('NUIFocusOff', function()
 	closeUI()
@@ -50,6 +76,11 @@ end)
 
 -- Open UI Function
 function openUI()
+	if Config.Animation.Active then 
+		playAnim('mp_common', 'givetake1_a', Config.Animation.Time)
+		Citizen.Wait(Config.Animation.Time)
+	end
+
 	IsInMainMenu = true
 	SetNuiFocus(true, true)
 	SendNUIMessage({type = 'openGeneral'})
@@ -60,6 +91,12 @@ end
 function closeUI()
 	IsInMainMenu = false
 	SetNuiFocus(false, false)
+
+	if Config.Animation.Active then 
+		playAnim('mp_common', 'givetake1_a', Config.Animation.Time)
+		Citizen.Wait(Config.Animation.Time)
+	end
+
 	SendNUIMessage({type = 'closeAll'})
 end
 
@@ -97,9 +134,9 @@ end)
 -- Create Blips
 Citizen.CreateThread(function()
 	if Config.UseATMBlips then
-		for k,v in pairs(Config.ATMLocations) do
-			for i=1, #v.Coords, 1 do
-				local blip = AddBlipForCoord(v.Coords[i])
+		for k,v in pairs(Config.Locations) do
+			for i=1, #v.ATMs, 1 do
+				local blip = AddBlipForCoord(v.ATMs[i])
 
 				SetBlipSprite (blip, Config.ATMBlip.Sprite)
 				SetBlipColour (blip, Config.ATMBlip.Color)
@@ -115,9 +152,9 @@ Citizen.CreateThread(function()
 	end
 
 	if Config.UseBankBlips then
-		for k,v in pairs(Config.BankLocations) do
-			for i=1, #v.Coords, 1 do
-				local blip = AddBlipForCoord(v.Coords[i])
+		for k,v in pairs(Config.Locations) do
+			for i=1, #v.Banks, 1 do
+				local blip = AddBlipForCoord(v.Banks[i])
 
 				SetBlipSprite (blip, Config.BankBlip.Sprite)
 				SetBlipColour (blip, Config.BankBlip.Color)
@@ -140,15 +177,15 @@ Citizen.CreateThread(function()
 		local playerCoords = GetEntityCoords(PlayerPedId())
 		local isInMarker, letSleep, currentZone = false, true
 
-		for k,v in pairs(Config.ATMLocations) do
-			for i=1, #v.Coords, 1 do
-				local distance = #(playerCoords - v.Coords[i])
+		for k,v in pairs(Config.Locations) do
+			for i=1, #v.ATMs, 1 do
+				local distance = #(playerCoords - v.ATMs[i])
 
 				if distance < Config.DrawDistance then
 					letSleep = false
 
 					if Config.ATMMarker.Type ~= -1 then
-						DrawMarker(Config.ATMMarker.Type, v.Coords[i], 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Config.ATMMarker.x, Config.ATMMarker.y, Config.ATMMarker.z, Config.ATMMarker.r, Config.ATMMarker.g, Config.ATMMarker.b, 100, false, true, 2, false, nil, nil, false)
+						DrawMarker(Config.ATMMarker.Type, v.ATMs[i], 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Config.ATMMarker.x, Config.ATMMarker.y, Config.ATMMarker.z, Config.ATMMarker.r, Config.ATMMarker.g, Config.ATMMarker.b, 100, false, true, 2, false, nil, nil, false)
 					end
 
 					if distance < Config.ATMMarker.x then
@@ -158,15 +195,15 @@ Citizen.CreateThread(function()
 			end
 		end
 
-		for k,v in pairs(Config.BankLocations) do
-			for i=1, #v.Coords, 1 do
-				local distance = #(playerCoords - v.Coords[i])
+		for k,v in pairs(Config.Locations) do
+			for i=1, #v.Banks, 1 do
+				local distance = #(playerCoords - v.Banks[i])
 
 				if distance < Config.DrawDistance then
 					letSleep = false
 
 					if Config.BankMarker.Type ~= -1 then
-						DrawMarker(Config.BankMarker.Type, v.Coords[i], 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Config.BankMarker.x, Config.BankMarker.y, Config.BankMarker.z, Config.BankMarker.r, Config.BankMarker.g, Config.BankMarker.b, 100, false, true, 2, false, nil, nil, false)
+						DrawMarker(Config.BankMarker.Type, v.Banks[i], 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Config.BankMarker.x, Config.BankMarker.y, Config.BankMarker.z, Config.BankMarker.r, Config.BankMarker.g, Config.BankMarker.b, 100, false, true, 2, false, nil, nil, false)
 					end
 
 					if distance < Config.BankMarker.x then

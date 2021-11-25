@@ -10,7 +10,7 @@ Advanced Banking for ESX Legacy - Edited/Made by Human Tree92 ([Velociti Enterta
 * Players can Deposit, Withdraw, & Transfer Money.
 * Works with all Banks & ATMs on the Map.
 * Has a Tablet Styled UI.
-* Works with esx_advancedholdup so if a player starts a robbery players won't be able to Access Banks or ATMs. This can be turned on/off in the config.lua
+* Works with esx_advancedholdup so if a player starts a robbery players won't be able to Access Banks. This can be turned on/off in the config.lua
 
 # Requirements:
 * Required:
@@ -58,12 +58,13 @@ Scripts that will no longer be Maintained.
 * [Forums]( http://velocitientertainment.com/forum )
 * [About Us]( http://velocitientertainment.com/pc-gaming/ )
 * [Donate]( http://velocitientertainment.com/donations/ )
+* [Patreon] ( https://www.patreon.com/VelocitiEntertainment?fan_landing=true )
 * [Steam Group]( http://steamcommunity.com/groups/velocitientertainment )
 * [Facebook]( http://facebook.com/VelocitiEntertainment )
 * [Twitter]( http://twitter.com/VelocitiEnt )
 * [YouTube]( http://youtube.com/user/HumanTree92 )
 * [Twitch]( http://twitch.tv/humantree92 )
-* [eBay]( http://ebay.com/usr/humantree92 )
+* [GitHub]( https://github.com/HumanTree92 )
 
 # Legal
 ### License

@@ -57,7 +57,7 @@ AddEventHandler('esx_advancedbanking:withdraw', function(amount)
 	account = xPlayer.getAccount('bank').money
 
 	if amount == nil or amount <= 0 then
-        xPlayer.showNotification(_U('invalid_amount'))
+		xPlayer.showNotification(_U('invalid_amount'))
 	else
 		if amount > account then
 			amount = account
@@ -75,7 +75,7 @@ AddEventHandler('esx_advancedbanking:transfer', function(target, amountt)
 	local xPlayer = ESX.GetPlayerFromId(_source)
 	local tPlayer = ESX.GetPlayerFromId(target)
 	local account = 0
-	
+
 	if tPlayer ~= nil and GetPlayerEndpoint(target) ~= nil then
 		account = xPlayer.getAccount('bank').money
 		taccount = tPlayer.getAccount('bank').money
